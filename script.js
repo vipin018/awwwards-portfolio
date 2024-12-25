@@ -35,4 +35,19 @@ tl.to(".parent .child", {
 tl.to("#loader", {
     height:0,
     duration:0.5,
+    ease: Circ.easeInOut,
+})
+tl.to("#green", {
+    height:"100%",
+    top:0,
+    delay:-0.8,
+    duration:0.4,
+    ease: Circ.easeInOut,
+})
+tl.to("#green", {
+    height:"0%",
+    top:0,
+    duration:0.5,
+    delay:-0.5,
+    ease: Circ.easeInOut,
 })
