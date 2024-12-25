@@ -1,3 +1,21 @@
+@font-face {
+    font-family: 'font1';
+    src: url('/Gilroy-Medium.e7e7c091.ttf') format('woff2'),
+        url('/Gilroy-Medium.e7e7c091.ttf') format('woff');
+}
+
+@font-face {
+    font-family: 'font2';
+    src: url('Gilroy-SemiBold.f3ed44cd.ttf') format('woff2'),
+        url('/Gilroy-SemiBold.f3ed44cd.ttf') format('woff');
+}
+
+@font-face {
+    font-family: 'font3';
+    src: url('/Mazius-Extraitalic.121a71a7.otf') format('woff2'),
+        url('/Mazius-Extraitalic.121a71a7.otf') format('woff');
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -8,4 +26,68 @@ html,
 body {
     height: 100%;
     width: 100%;
+}
+
+#main {
+    width: 100%;
+}
+
+#loader {
+    width: 100%;
+    height: 100vh;
+    background-color: #111;
+    color: #fff;
+    font-family: 'font2';
+  
+    font-size: 12px;
+}
+
+#loader #topHeading{
+    text-align: center;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#loader h1{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'font2';
+    font-size: 5.5vw ;
+    
+    /* background-color: red; */
+}
+
+.reveal .parent{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    overflow-y: hidden;
+}
+
+.reveal .parent .child{
+    display: block;
+}
+.reveal .pathak{
+    font-family: 'font3';
+    font-weight: 100;
+    color: #14cf93;
+}
+
+.parent .child span{
+    display: inline-block;
+}
+
+#green {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: 0vh;
+    background-color: #14cf93;
 }
