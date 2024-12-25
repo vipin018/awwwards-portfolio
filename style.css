@@ -33,16 +33,17 @@ body {
 }
 
 #loader {
+    display: none;
     width: 100%;
     height: 100vh;
     background-color: #2d2d2d;
     color: #fff;
     font-family: 'font2';
-  
+    position: absolute;
     font-size: 12px;
 }
 
-#loader #topHeading{
+#loader #topHeading {
     text-align: center;
     position: absolute;
     top: 5%;
@@ -50,7 +51,7 @@ body {
     transform: translateX(-50%);
 }
 
-#loader h1{
+#loader h1 {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -59,35 +60,118 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: 'font2';
-    font-size: 5.5vw ;
-    
+    font-size: 5.5vw;
+
     /* background-color: red; */
 }
 
-.reveal .parent{
-    width:100%;
+.reveal .parent {
+    width: 100%;
     display: flex;
     justify-content: center;
     overflow-y: hidden;
 }
 
-.reveal .parent .child{
+.reveal .parent .child {
     display: block;
 }
-.reveal .pathak{
+
+.reveal .pathak {
     font-family: 'font3';
     font-weight: 100;
-    color: #14cf93;
+    color: #52E0ED;
 }
 
-.parent .child span{
+.parent .child span {
     display: inline-block;
 }
 
 #green {
+    display: none;
     position: absolute;
     top: 100%;
     width: 100%;
     height: 0vh;
-    background-color: #14cf93;
+    background-color: #52E0ED;
+}
+
+#home {
+    width: 100%;
+    height: 200vh;
+    background-color: #FCFAF8;
+}
+
+#home #nav {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #2d2d2d;
+    padding: 0 5vw;
+    font-size: 12px;
+}
+
+#nav a {
+    position: relative;
+    text-decoration: none;
+    color: #2d2d2d;
+    font-family: 'font1';
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+#nav a .line {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: inline-block;
+    width: 100%;
+    height: 0.5px;
+    background-color: #2d2d2d;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
+}
+
+#nav a:hover .line {
+    width: 0;
+}
+
+#row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 7vw;
+    margin-top: 5vw;
+    padding-right: 12vw;
+    color: #383838;
+    line-height: 1;
+}
+
+#row h1 {
+    font-size: 13vw;
+    font-family: 'font1';
+    font-weight: 100;
+
+}
+
+#row .text span{
+    font-family: font3 ;
+}
+
+#row h5 {
+    opacity: 0.5;
+    font-family: 'font1';
+    font-weight: 100;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+#row:nth-child(3){
+margin-top: 0;
+}
+#row svg{
+    height: 140px;
+    padding-left: 100px;
+    padding-right: 40px;
 }
