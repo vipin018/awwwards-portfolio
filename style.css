@@ -26,6 +26,8 @@ html,
 body {
     height: 100%;
     width: 100%;
+    font-family: 'font1';
+    color: #2d2d2d;
 }
 
 #main {
@@ -33,7 +35,7 @@ body {
 }
 
 #loader {
-    /* display: none; */
+    display: none;
     width: 100%;
     height: 100vh;
     background-color: #2d2d2d;
@@ -89,7 +91,7 @@ body {
 }
 
 #green {
-    /* display: none; */
+    display: none;
     position: absolute;
     top: 100%;
     width: 100%;
@@ -100,7 +102,7 @@ body {
 
 #home {
     width: 100%;
-    height: 200vh;
+    height: 150vh;
     background-color: #FCFAF8;
 }
 
@@ -158,8 +160,8 @@ body {
 
 }
 
-#row .text span{
-    font-family: font3 ;
+#row .text span {
+    font-family: font3;
 }
 
 #row h5 {
@@ -170,11 +172,62 @@ body {
     text-transform: uppercase;
 }
 
-#row:nth-child(3){
-margin-top: 0;
+#row:nth-child(3) {
+    margin-top: 0;
 }
-#row svg{
+
+#row svg {
     height: 140px;
     padding-left: 100px;
     padding-right: 40px;
+}
+
+#imagery {
+    width: 100%;
+    padding: 0 7vw;
+    display: flex;
+    align-items: center;
+    margin-top: 18vw;
+    padding-right: 12vw;
+    color: #414141;
+}
+
+#imagery .imgLeft {
+    width: 30%;
+    height: auto;
+    /* background-color: #281111; */
+}
+
+.imgLeft h1 {
+    font-size: 2.4vw;
+    font-family: 'font1';
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    line-height: 1;
+}
+
+.imgLeft h1 span {
+    color: #52E0ED;
+    font-family: font3;
+    text-transform: capitalize;
+    font-style: italic;
+}
+
+#imgRight {
+    height: auto;
+    width: 60%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: yellow;
+}
+
+#imgRight .img-container {
+    position: absolute;
+    background-color: red;
+    width: 30vw;
+    height: 45vw;
+   
 }
