@@ -28,6 +28,7 @@ body {
     width: 100%;
     font-family: 'font1';
     color: #2d2d2d;
+    background-color: #fff4e711;
 }
 
 #main {
@@ -103,7 +104,6 @@ body {
 #home {
     width: 100%;
     height: 150vh;
-    background-color: #FCFAF8;
 }
 
 #home #nav {
@@ -187,8 +187,8 @@ body {
     padding: 0 7vw;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-top: 18vw;
-    padding-right: 12vw;
     color: #414141;
 }
 
@@ -214,20 +214,21 @@ body {
     font-style: italic;
 }
 
-#imgRight {
-    height: auto;
+.imgRight {
+    height: 300px;
     width: 60%;
     position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
-    background-color: yellow;
+    justify-content: center;
+    /* background-color: yellow; */
 }
 
-#imgRight .img-container {
+.imgRight .img-container {
     position: absolute;
     background-color: red;
     width: 30vw;
     height: 45vw;
+    border-radius: 1vw;
    
 }
