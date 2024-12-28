@@ -232,3 +232,8 @@ body {
     border-radius: 1vw;
    
 }
+
+.imgRight .img-container:nth-child(1) {
+    transform: rotate(-10deg);
+
+}
