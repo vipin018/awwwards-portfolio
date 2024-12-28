@@ -121,10 +121,22 @@ function locoInit() {
     });
 }
 
+function cardShow() {
+    document.querySelectorAll(".cont")
+        .forEach(function (cont) {
+            cont.addEventListener("mousemove", function (dets) {
+                // console.log(dets.target.dataset.index);
+                document.querySelector("#cursor").children[dets.target.dataset.index].style.opacity = 1;
+                document.querySelector("#cursor").children[dets.target.dataset.index].style.transform = "translate(" + dets.clientX + "px," + dets.clientY + "px)";
+            })
+        })
+}
+
 // Initial function calls to start animations
 revealToSpan(); // Call the function to run it 
 valueSetter(); // Call the function to run it
 loaderAnimation(); // Start the loader animation
 locoInit(); // Initialize Locomotive Scroll
+cardShow(); // Call the function to run it
 
 
