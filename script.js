@@ -114,9 +114,17 @@ function animateSvg() {
     });
 }
 
+function locoInit() {
+    const scroll = new LocomotiveScroll({
+        el: document.querySelector('#main'),
+        smooth: true
+    });
+}
+
 // Initial function calls to start animations
 revealToSpan(); // Call the function to run it 
 valueSetter(); // Call the function to run it
 loaderAnimation(); // Start the loader animation
+locoInit(); // Initialize Locomotive Scroll
 
 
