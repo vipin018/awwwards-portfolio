@@ -1,3 +1,7 @@
+/**
+ * Converts elements with class 'reveal' into a nested span structure
+ * Used for text reveal animations where text slides into view
+ */
 function revealToSpan() {
     // Select all elements with the class 'reveal'
     document.querySelectorAll('.reveal')
@@ -16,104 +20,131 @@ function revealToSpan() {
         });
 }
 
+/**
+ * Sets initial properties for various elements before animations begin
+ * This includes navigation links, home elements, and SVG elements
+ */
 function valueSetter() {
     // Set initial properties for navigation links and home elements
     gsap.set("#nav a", {
-        y: "-100%", // Move links off-screen vertically
-        opacity: 0 // Set initial opacity to 0
+        y: "-100%", // Move links off-screen vertically (up)
+        opacity: 0 // Hide links initially
     });
     gsap.set("#home .parent .child", {
         y: "100%", // Move child elements down off-screen
     });
     gsap.set("#home #row img", {
-        opacity: 0, // Set initial opacity of images to 0
+        opacity: 0, // Hide images initially
     });
 
-    // Set stroke properties for SVG elements
+    // Configure SVG stroke animations by setting up dasharray and dashoffset
     document.querySelectorAll("#Visual>g").forEach(function (elem) {
-        elem.childNodes[1].childNodes[1].style.strokeDasharray = elem.childNodes[1].childNodes[1].getTotalLength() + "px"; // Set stroke dasharray
-        elem.childNodes[1].childNodes[1].style.strokeDashoffset = elem.childNodes[1].childNodes[1].getTotalLength() + "px"; // Set stroke dashoffset
+        // Get total length of SVG path for stroke animation
+        var pathLength = elem.childNodes[1].childNodes[1].getTotalLength();
+        elem.childNodes[1].childNodes[1].style.strokeDasharray = pathLength + "px";
+        elem.childNodes[1].childNodes[1].style.strokeDashoffset = pathLength + "px";
     });
 }
 
+/**
+ * Handles the initial loading animation sequence
+ * Creates a timeline of animations for the loader and transition effects
+ */
 function loaderAnimation() {
-    var tl = gsap.timeline(); // Create a timeline instance for animations
+    var tl = gsap.timeline(); // Create a timeline for sequential animations
 
     tl
+        // Animate loader text sliding in
         .from("#loader .child span ", {
-            x: 100, // Start position for the animation
-            ease: "power3.out", // Easing function for the animation
-            duration: 1, // Duration of the animation
-            delay: 1, // Delay before starting the animation
-            stagger: 0.15, // Stagger the animation for child elements
-            opacity: 0 // Start with opacity 0
+            x: 100, // Start from right
+            ease: "power3.out",
+            duration: 1,
+            delay: 1,
+            stagger: 0.15, // Stagger each letter's animation
+            opacity: 0
         })
+        // Slide loader text up and out
         .to("#loader .parent .child", {
-            y: "-100%", // Move the child up off-screen
-            ease: Circ.easeInOut, // Easing function for the animation
-            duration: 0.5, // Duration of the animation
+            y: "-100%",
+            ease: Circ.easeInOut,
+            duration: 0.5,
         })
+        // Collapse loader height
         .to("#loader", {
-            height: 0, // Animate height to 0
-            duration: 0.5, // Duration of the animation
-            ease: Circ.easeInOut, // Easing function for the animation
+            height: 0,
+            duration: 0.5,
+            ease: Circ.easeInOut,
         })
+        // Green screen transition effect (sliding up)
         .to("#green", {
-            height: "100%", // Animate height to 100%
-            top: 0, // Set top position to 0
-            delay: -0.8, // Delay before starting this animation
-            duration: 0.4, // Duration of the animation
-            ease: Circ.easeInOut, // Easing function for the animation
+            height: "100%",
+            top: 0,
+            delay: -0.8,
+            duration: 0.4,
+            ease: Circ.easeInOut,
         })
+        // Green screen transition effect (sliding out)
         .to("#green", {
-            height: "0%", // Animate height back to 0%
-            top: 0, // Keep top position at 0
-            duration: 0.5, // Duration of the animation
-            delay: -0.5, // Delay before starting this animation
-            ease: Circ.easeInOut, // Easing function for the animation
+            height: "0%",
+            top: 0,
+            duration: 0.5,
+            delay: -0.5,
+            ease: Circ.easeInOut,
             onComplete: function () {
-                homepageAnimation(); // Call homepageAnimation when this animation completes
+                homepageAnimation(); // Start homepage animations after loader
             }
         });
 }
 
+/**
+ * Handles the main homepage animation sequence
+ * Animates navigation links, text elements, and images
+ */
 function homepageAnimation() {
-    var tl = gsap.timeline(); // Create a timeline instance for homepage animations
+    var tl = gsap.timeline();
 
     tl
+        // Animate navigation links sliding down into view
         .to("#nav a", {
-            y: "0%", // Move links into view
-            opacity: 1, // Set opacity to 1
-            duration: 1, // Duration of the animation
-            stagger: 0.1, // Stagger the animation for nav links
-            ease: Expo.easeInOut, // Easing function for the animation
+            y: "0%",
+            opacity: 1,
+            duration: 1,
+            stagger: 0.1, // Stagger each link's animation
+            ease: Expo.easeInOut,
         })
+        // Animate text elements sliding up into view
         .to("#home .parent .child", {
-            y: "0%", // Move child elements into view
-            duration: 1, // Duration of the animation
-            ease: Expo.easeInOut, // Easing function for the animation
-            stagger: 0.1, // Stagger the animation for child elements
+            y: "0%",
+            duration: 1,
+            ease: Expo.easeInOut,
+            stagger: 0.1,
         })
+        // Fade in images
         .to("#home #row img", {
-            opacity: 1, // Set opacity of images to 1
-            duration: 1, // Duration of the animation
-            ease: Expo.easeInOut, // Easing function for the animation
-            stagger: 0.1, // Stagger the animation for images
+            opacity: 1,
+            duration: 1,
+            ease: Expo.easeInOut,
+            stagger: 0.1,
             onComplete: function () {
-                animateSvg(); // Call animateSvg when this animation completes
+                animateSvg(); // Start SVG animations after images are loaded
             }
         });
 }
 
+/**
+ * Animates SVG elements by revealing their strokes
+ */
 function animateSvg() {
-    // Animate SVG paths and polylines to reveal them
     gsap.to("#Visual>g>g>path, #Visual>g>g>polyline", {
-        strokeDashoffset: 0, // Animate strokeDashoffset to 0 to reveal the SVG
-        duration: 2, // Duration of the animation
-        ease: Expo.easeInOut, // Easing function for the animation
+        strokeDashoffset: 0, // Animate stroke to reveal SVG
+        duration: 2,
+        ease: Expo.easeInOut,
     });
 }
 
+/**
+ * Initializes Locomotive Scroll for smooth scrolling
+ */
 function locoInit() {
     const scroll = new LocomotiveScroll({
         el: document.querySelector('#home'),
@@ -121,23 +152,33 @@ function locoInit() {
     });
 }
 
+/**
+ * Handles hover effects for cards/images
+ * Shows a cursor image and applies grayscale effect on hover
+ */
 function cardHoverEffect() {
     document.querySelectorAll(".cont")
         .forEach(function (cont) {
             var showImg;
+            // Handle mouse movement over cards
             cont.addEventListener("mousemove", function (dets) {
-                // console.log(dets.target.dataset.index);
+                // Show cursor image corresponding to the hovered card
                 document.querySelector("#cursor").children[dets.target.dataset.index].style.opacity = 1;
                 showImg = dets.target;
-                document.querySelector("#cursor").children[dets.target.dataset.index].style.transform = "translate(" + dets.clientX + "px," + dets.clientY + "px)";
+                // Move cursor image to mouse position
+                document.querySelector("#cursor").children[dets.target.dataset.index].style.transform = 
+                    `translate(${dets.clientX}px,${dets.clientY}px)`;
+                // Apply grayscale effect to hovered card
                 showImg.style.filter = "grayscale(1)";
                 showImg.style.transition = "all 0.3s";
                 showImg.style.transitionTimingFunction = "ease-in-out";
                 showImg.style.transitionDelay = "0s";
-                
             })
+            // Handle mouse leaving cards
             cont.addEventListener("mouseleave", function (dets) {
+                // Hide cursor image
                 document.querySelector("#cursor").children[showImg.dataset.index].style.opacity = 0;
+                // Remove grayscale effect
                 showImg.style.filter = "grayscale(0)";
                 showImg.style.transition = "all 0.3s";
                 showImg.style.transitionTimingFunction = "ease-in-out";
@@ -145,11 +186,11 @@ function cardHoverEffect() {
         })
 }
 
-// Initial function calls to start animations
-revealToSpan(); // Call the function to run it 
-valueSetter(); // Call the function to run it
-loaderAnimation(); // Start the loader animation
-locoInit(); // Initialize Locomotive Scroll
-cardHoverEffect(); // Call the function to run it
+// Initialize all animations and effects
+revealToSpan(); // Set up text reveal elements
+valueSetter(); // Set initial states
+loaderAnimation(); // Start loading sequence
+locoInit(); // Initialize smooth scrolling
+cardHoverEffect(); // Set up card hover effects
 
 
