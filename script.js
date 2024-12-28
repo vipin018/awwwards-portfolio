@@ -121,13 +121,26 @@ function locoInit() {
     });
 }
 
-function cardShow() {
+function cardHoverEffect() {
     document.querySelectorAll(".cont")
         .forEach(function (cont) {
+            var showImg;
             cont.addEventListener("mousemove", function (dets) {
                 // console.log(dets.target.dataset.index);
                 document.querySelector("#cursor").children[dets.target.dataset.index].style.opacity = 1;
+                showImg = dets.target;
                 document.querySelector("#cursor").children[dets.target.dataset.index].style.transform = "translate(" + dets.clientX + "px," + dets.clientY + "px)";
+                showImg.style.filter = "grayscale(1)";
+                showImg.style.transition = "all 0.3s";
+                showImg.style.transitionTimingFunction = "ease-in-out";
+                showImg.style.transitionDelay = "0s";
+                
+            })
+            cont.addEventListener("mouseleave", function (dets) {
+                document.querySelector("#cursor").children[showImg.dataset.index].style.opacity = 0;
+                showImg.style.filter = "grayscale(0)";
+                showImg.style.transition = "all 0.3s";
+                showImg.style.transitionTimingFunction = "ease-in-out";
             })
         })
 }
@@ -137,6 +150,6 @@ revealToSpan(); // Call the function to run it
 valueSetter(); // Call the function to run it
 loaderAnimation(); // Start the loader animation
 locoInit(); // Initialize Locomotive Scroll
-cardShow(); // Call the function to run it
+cardHoverEffect(); // Call the function to run it
 
 

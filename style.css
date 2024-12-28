@@ -339,11 +339,11 @@ body {
     width: 105%;
 }
 
-#cont1 {
+.cont1 {
     width: 55%;
 }
 
-#cont2 {
+.cont2 {
     width: 26%;
 }
 
@@ -356,6 +356,8 @@ body {
 }
 
 #cursor>div {
+    pointer-events: none;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.3s;
     opacity: 0;
     position: absolute;
 }
@@ -438,3 +440,4 @@ body {
         opacity: 0;
     }
 }
+
