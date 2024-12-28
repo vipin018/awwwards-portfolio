@@ -103,7 +103,7 @@ body {
 
 #home {
     width: 100%;
-    height: 150vh;
+    height: auto;
 }
 
 #home #nav {

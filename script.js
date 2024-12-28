@@ -116,7 +116,7 @@ function animateSvg() {
 
 function locoInit() {
     const scroll = new LocomotiveScroll({
-        el: document.querySelector('#main'),
+        el: document.querySelector('#home'),
         smooth: true
     });
 }
